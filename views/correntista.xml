@@ -4,10 +4,26 @@
 <!--Todo arquivo XML do odoo deve estar dentro desse argumento "<odoo> ... </odoo>",
     e tambem deve ser declarado a versão e o encoding na primeira linha, como observado acima.-->
 <odoo>
+
+    <!-- Essa parte do código xml possui o intuito de gerar a lista na pagina do app-->
+    <record id="banco_correntista_tree" model="ir.ui.view">
+        <field name="name">banco.correntista.tree</field>
+        <field name="model">banco.correntista</field>
+        <field name="arch" type="xml">
+            <tree string="Tags">
+                <field name="correntista" />
+                <field name="idade" />
+                <field name="sexo" />
+            </tree>
+        </field>
+    </record>
+
+
+    
         <!--Nessa linha record é informado o id da "pagina", e como ela deve ser aberta em model ao ser clicado
             no menu item criado no fim da pagina.-->
         <record id="action_correntista" model="ir.actions.act_window">
-            <field name="name">Correntistas</field> <!--Nome da tela-->
+            <field name="name">Correntistas </field> <!--Nome da tela-->
             <field name="res_model">banco.correntista</field> <!--Informar qual model deve ser puxado-->
             <field name="view_mode">tree,kanban,form</field> <!--Forma de visão representado no lado direito do odoo-->
             <field name="help" type="html">
@@ -18,7 +34,8 @@
         </record>
 
 
-        <!-- Menu Top -->
+
+           <!-- Menu Top -->
         <menuitem name="Banco"
             id="banco_root"/> <!--  Os menus podem ser identificados como cascata, ja que um 
                                     redireciona para o outro, ou seja, devemos passar 
